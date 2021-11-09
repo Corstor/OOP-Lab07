@@ -36,36 +36,38 @@ public enum Sport {
 	}
 
 	/**
-	 * Returns true if the sport defined by the object is an individual sport
+	 * Must return true if called on individual sports
 	 * 
-	 * @return boolean
+	 * @return true if the sport is individual, false in any other case
 	 */
 	public boolean isIndividualSport() {
 		return this.noTeamMembers == 1;
 	}
 	
 	/**
-	 * Returns true if the sport defined by the object is practised indoor
+	 * Must return true if the sport is practiced indoor
 	 * 
-	 * @return boolean
+	 * @return true if the sport is practiced indoor, false in any other case
 	 */
 	public boolean isIndoorSport() {
 		return this.getPlace() == Place.INDOOR;
 	}
 	
 	/**
-	 * Returns the place where this sport is practised
+	 * Must return the place where this sport is practiced
 	 * 
-	 * @return Place
+	 * @return the place where the sport is practiced
 	 */
 	public Place getPlace() {
 		return this.place;
 	}
 	
 	/**
-	 * {@inheritDoc}
-	 */
+     * Returns the string representation of a sport.
+     * 
+     * @return the text representation of the sport
+     */
 	public String toString() {
-		return this.actualName + " is practised " + this.getPlace() + " by " + this.noTeamMembers + " people.";
+		return this.actualName + " is practised " + this.getPlace() + ", by " + this.noTeamMembers + " people.";
 	}
 }
