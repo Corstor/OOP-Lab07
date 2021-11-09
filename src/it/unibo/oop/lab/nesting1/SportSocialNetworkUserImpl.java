@@ -97,12 +97,6 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
         this.sports = new HashSet<>();
     }
 
-    /*
-     * [METHODS]
-     * 
-     * Implements all the methods below
-     */
-
     /**
      * Add a new sport followed by this user: if the user already likes or does
      * the sport, nothing happens.
@@ -110,9 +104,10 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      * @param sport
      *            a sport followed/done by the user
      */
-    // TODO
     public void addSport(final Sport sport) {
-
+    	if (!this.hasSport(sport)) {
+    		this.sports.add(sport);
+    	}    	
     }
 
     /**
@@ -122,13 +117,12 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      *            sport to use as an input
      * @return true if a user likes sport s
      */
-    // TODO
     public boolean hasSport(final Sport s) {
-        return false;
+        return this.sports.contains(s);
     }
-    
+
     /**
-     * Represents the sport that a user can likes to do through it's name
+     * Represents the sport that a user can likes to do/does through it's name
      */
     public static final class Sport {
     	
