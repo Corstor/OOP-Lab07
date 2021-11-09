@@ -4,6 +4,7 @@
 package it.unibo.oop.lab.nesting1;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import it.unibo.oop.lab.socialnetwork.SocialNetworkUserImpl;
@@ -49,16 +50,13 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      */
     public static final Sport BIKE;
 
-    /*
-     * TODO: initialize properly these sports
-     */
     static {
-        SOCCER = null;
-        F1 = null;
-        MOTOGP = null;
-        VOLLEY = null;
-        BASKET = null;
-        BIKE = null;
+        SOCCER = new Sport("Soccer");
+        F1 = new Sport("F1");
+        MOTOGP = new Sport("MotoGP");
+        VOLLEY = new Sport("Volley");
+        BASKET = new Sport("Basket");
+        BIKE = new Sport("Bike");
     }
 
     /**
@@ -128,23 +126,52 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
     public boolean hasSport(final Sport s) {
         return false;
     }
-
-    /*
-     * TODO
-     * 
-     * Complete the definition of this static inner class defining a Sport along
-     * with its bare name.
+    
+    /**
+     * Represents the sport that a user can likes to do through it's name
      */
     public static final class Sport {
-        /*
-         * TODO
-         * 
-         * Redefine equals so that two sports are equal only if they feature the
-         * very same name. Remember that you must also redefine hashCode()!
+    	
+    	private final String name;
+    	    	
+    	
+        /**
+         *	Builds a new {@link Sport} 
+         *
+         *	@param name
+         * 				name of the Sport
          */
-        @Override
+        public Sport(String name) {
+			super();
+			this.name = name;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public int hashCode() {
+			return Objects.hash(name);
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
         public boolean equals(final Object o) {
-            return false;
+			
+			if (o == null || !this.getClass().equals(o.getClass())) {
+				return false;
+			}
+			
+			if (o == this) {
+				return true;
+			}
+			
+			final Sport sport = (Sport) o;
+			
+			return this.name.equals(sport.name);
         }
+		
     }
 }
