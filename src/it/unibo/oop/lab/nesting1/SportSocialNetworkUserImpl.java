@@ -135,7 +135,7 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
          */
         public Sport(String name) {
 			super();
-			this.name = name;
+			this.name = Objects.requireNonNull(name, "The sport name can't be null");
 		}
 
 		/**
