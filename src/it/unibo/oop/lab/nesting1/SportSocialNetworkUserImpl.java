@@ -105,9 +105,7 @@ public class SportSocialNetworkUserImpl<U extends User> extends SocialNetworkUse
      *            a sport followed/done by the user
      */
     public void addSport(final Sport sport) {
-    	if (!this.hasSport(sport)) {
-    		this.sports.add(sport);
-    	}    	
+    	this.sports.add(sport);
     }
 
     /**
