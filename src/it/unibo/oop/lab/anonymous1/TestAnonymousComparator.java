@@ -96,6 +96,7 @@ public final class TestAnonymousComparator {
         System.out.println("[Order by age (increasing) Denzel friends] [TEST] [RESULT] "
                 + checkUserOrder(expectedResult, denzelUsers));
         System.out.println("[Order by age (increasing) Denzel friends] [TEST] [END]");
+        
         /*
          * TEST on MARIO ROSSI
          */
@@ -105,6 +106,7 @@ public final class TestAnonymousComparator {
         mrossi.addFollowedUser("economists", ntaleb);
         mrossi.addFollowedUser("actors i like", dwashington);
         final List<User> rossiUsers = mrossi.getFollowedUsers();
+        
         /*
          * Order rossi's followed users by age in decreasing order:
          * 
@@ -113,7 +115,12 @@ public final class TestAnonymousComparator {
          * NOTE: in order to sort a list think about a method of the utility
          * class Collections
          */
-        // TODO
+        Collections.sort(rossiUsers, new Comparator<User>() {
+        	public int compare(User a, User b) {
+        		return Integer.compare(b.getAge(), a.getAge());
+        	}
+        });
+        
         /*
          * expected Result
          */
