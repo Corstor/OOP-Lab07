@@ -39,7 +39,7 @@ public class OneListAcceptable<T> implements Acceptable<T> {
 			 */
 			@Override
 			public void accept(T newElement) throws ElementNotAcceptedException {
-				if (newElement != null && newElement.equals(list.get(current))) {
+				if (newElement != null && list.size() > current && newElement.equals(list.get(current))) {
 					this.current++;
 				} else {
 					throw new ElementNotAcceptedException(newElement);
@@ -51,7 +51,7 @@ public class OneListAcceptable<T> implements Acceptable<T> {
 			 */
 			@Override
 			public void end() throws EndNotAcceptedException {
-				if (list.size() != current - 1) {
+				if (list.size() != current) {
 					throw new EndNotAcceptedException();
 				}
 			}
